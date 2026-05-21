@@ -12,15 +12,15 @@ All custom skills are located within the `skills/` directory and grouped by cont
 ├── CONTEXT.md
 ├── docs/
 │   └── adr/
-│       └── 0001-universal-skills-installation.md
+│       ├── 0001-universal-skills-installation.md
+│       └── 0002-local-markdown-issue-tracking.md
 ├── scripts/
 │   └── install.sh                       ← Installation script to link skills locally
 └── skills/
     └── engineering/
-        └── grill-with-doc/              ← Socratic technical plan grilling skill
-            ├── SKILL.md                 ← YAML frontmatter and skill instructions
-            ├── ADR-FORMAT.md            ← Architecture Decision Record (ADR) guidelines
-            └── CONTEXT-FORMAT.md        ← Domain Glossary (CONTEXT.md) guidelines
+        ├── grill-with-doc/              ← Socratic technical plan grilling skill
+        ├── to-issues/                   ← Atomic markdown-first issue breakdown skill
+        └── to-prd/                      ← Professional PRD generation skill (personal & workplace)
 ```
 
 ## Available Skills
@@ -28,6 +28,8 @@ All custom skills are located within the `skills/` directory and grouped by cont
 ### 🛠️ Engineering
 
 *   **[grill-with-doc](file:///Users/nasrunhayeeyama/work/neverholiday/skill/skills/engineering/grill-with-doc/SKILL.md)**: A Socratic sparring partner designed to stress-test your implementation plans against existing code, establish a domain glossary (`CONTEXT.md`), and document critical trade-offs using Architectural Decision Records (ADRs).
+*   **[to-prd](file:///Users/nasrunhayeeyama/work/neverholiday/skill/skills/engineering/to-prd/SKILL.md)**: A unified Product Requirement Document (PRD) generator supporting both Personal Mode (deep technical specs) and Workplace Mode (traceable to Product Owner objectives, Figma designs, and Definition of Done specs).
+*   **[to-issues](file:///Users/nasrunhayeeyama/work/neverholiday/skill/skills/engineering/to-issues/SKILL.md)**: A modular issue breakdown skill that parses any `docs/prd.md` to generate highly detailed, atomic local markdown tasks in `docs/issues/` with complete traceability.
 
 ### ⚡ Productivity
 
