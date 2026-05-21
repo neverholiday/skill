@@ -25,6 +25,10 @@ All custom skills are located within the `skills/` directory and grouped by cont
 
 *   **[grill-with-doc](file:///Users/nasrunhayeeyama/work/neverholiday/skill/skills/engineering/grill-with-doc/SKILL.md)**: A Socratic sparring partner designed to stress-test your implementation plans against existing code, establish a domain glossary (`CONTEXT.md`), and document critical trade-offs using Architectural Decision Records (ADRs).
 
+### ⚡ Productivity
+
+*   **[write-a-skill](file:///Users/nasrunhayeeyama/work/neverholiday/skill/skills/productivity/write-a-skill/SKILL.md)**: A structured assistant designed to walk you through standardizing and writing new custom agent skills with proper layouts and progressive disclosure.
+
 ## Installation
 
 To install or update these skills so they are available in your **Antigravity** CLI sessions, run the installation script:
