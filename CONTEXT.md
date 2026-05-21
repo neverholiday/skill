@@ -31,3 +31,8 @@ _Avoid_: Completion checklist
 **Issue**:
 A discrete engineering task represented as a markdown file in a dedicated folder, tracing back directly to a specific section of a PRD.
 _Avoid_: Ticket, card
+
+**Issue Index**:
+A markdown document (typically `docs/issues/README.md`) that lists all generated Issues, their current status, and basic project progress metrics.
+_Avoid_: Issue summary, task list, backlog summary
+
