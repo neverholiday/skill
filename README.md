@@ -1,6 +1,6 @@
-# SKILL
+# Agent Skills Repository
 
-This repository contains my personal custom skills for the **Antigravity** AI coding assistant. It uses a clean, structured directory layout inspired by `mattpocock/skills` to support easy development, customization, and seamless local installation.
+This repository contains my personal custom skills for AI Agentic Coding Assistants (including Antigravity, Claude Code, and Codex). It uses a clean, structured directory layout inspired by `mattpocock/skills` to support easy development, customization, and seamless local installation.
 
 ## Repository Structure
 
@@ -9,6 +9,10 @@ All custom skills are located within the `skills/` directory and grouped by cont
 ```
 .
 ├── README.md
+├── CONTEXT.md
+├── docs/
+│   └── adr/
+│       └── 0001-universal-skills-installation.md
 ├── scripts/
 │   └── install.sh                       ← Installation script to link skills locally
 └── skills/
@@ -32,11 +36,34 @@ All custom skills are located within the `skills/` directory and grouped by cont
 
 ## Installation
 
-To install or update these skills so they are available in your **Antigravity** CLI sessions, run the installation script:
+To install or update these skills so they are available in your preferred AI Agentic Coding Assistant, run the installation script:
 
 ```bash
+# Default (Installs for Antigravity)
 ./scripts/install.sh
+
+# Target Claude Code
+./scripts/install.sh --platform claude
+
+# Target Codex
+./scripts/install.sh --platform codex
+
+# Target all supported platforms at once
+./scripts/install.sh --platform all
+```
+
+### Options
+
+Use `--help` to view all available parameters:
+
+```
+Options:
+  -p, --platform NAME Target AI Agent platform: antigravity, claude, codex, all (default: antigravity)
+  -d, --dest PATH     Override the destination path for the selected platform (cannot be used with --platform all)
+  -u, --uninstall     Remove installed symlinks instead of creating them
+  -n, --dry-run       Show what would be done without making actual changes
+  -h, --help          Show this help message
 ```
 
 ### How it works
-The installation script creates a symlink from each skill directory to your Antigravity skills directory at `~/.gemini/antigravity-cli/skills/`. Because they are symlinked, any changes you make in this repository are **instantly active** in your Antigravity CLI without having to re-run the install script!
+The installation script creates a symlink from each skill directory to the agent's global skills directory (e.g. `~/.gemini/antigravity-cli/skills/`, `~/.claude/skills/`, or `~/.agents/skills/`). Because they are symlinked, any changes you make in this repository are **instantly active** in your CLI sessions without having to re-run the install script!
