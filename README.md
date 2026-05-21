@@ -27,6 +27,7 @@ All custom skills are located within the `skills/` directory and grouped by cont
 
 ### ⚡ Productivity
 
+*   **[git-commit-push](file:///Users/nasrunhayeeyama/work/neverholiday/skill/skills/productivity/git-commit-push/SKILL.md)**: An automated, token-efficient, and precise workflow to interactively stage changes, generate concise Conventional Commits, and push to remote repositories.
 *   **[write-a-skill](file:///Users/nasrunhayeeyama/work/neverholiday/skill/skills/productivity/write-a-skill/SKILL.md)**: A structured assistant designed to walk you through standardizing and writing new custom agent skills with proper layouts and progressive disclosure.
 
 ## Installation
