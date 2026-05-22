@@ -28,14 +28,38 @@ Break down the requirements into **atomic tasks**. A task is atomic if it:
 - Has a clear definition of success.
 - Focuses on a single subsystem (e.g., database schema vs. API endpoint vs. frontend UI).
 
-### 3. Generate Task Markdown Files
+### 3. Quiz the User
+Before generating any task markdown files, the AI Agent must present the proposed task breakdown to the user in a clean, high-level summary table.
+
+#### Rules for the Quiz
+1. **Focus on Local Attributes**: Focus strictly on the following task attributes:
+   - **Task ID**: Sequential IDs starting from `TASK-0001`.
+   - **Title**: A concise, descriptive name of the task.
+   - **Estimate**: Fibonacci story points (1, 2, 3, 5, 8) based on complexity and risk.
+   - **User Stories**: Traced User Stories (e.g., `US-1`, `US-2`).
+   - **PRD Section**: The target header/anchor in the PRD.
+   - **Assignee**: Defaults to `"unassigned"`.
+   Do not introduce external concepts like `HITL`/`AFK` classifications.
+2. **Handle Creation and Updates**:
+   - **For new task breakdowns**: Present all proposed tasks.
+   - **For updates to existing breakdowns**: Mark each proposed task with one of the following state tags:
+     - `[NEW]`: Task is new and needs to be created.
+     - `[MODIFIED]`: Existing task whose metadata (title, estimate, etc.) is being updated.
+     - `[DELETED]`: Existing task that is no longer needed.
+     - `[UNTOUCHED]`: Existing task that remains unchanged.
+3. **Iterative Refinement**:
+   - Explicitly ask the user if the granularity of the breakdown is correct, if the estimates are reasonable, and if the story mappings are correct.
+   - If the user requests changes (e.g., splitting a task, changing an estimate, or renaming), update the proposed plan, re-sequence the task IDs if needed, and present the updated high-level summary.
+   - Wait for explicit user approval (e.g., "Approved" or "Looks good") before proceeding to file generation.
+
+### 4. Generate Task Markdown Files
 For each task, create a markdown file in the `docs/tasks/` folder. Use sequential numbering (e.g., `0001-xxx.md`, `0002-xxx.md`).
 Each task must strictly use the structure defined in `skills/engineering/to-tasks/templates/task-template.md`:
 - **YAML Frontmatter:** Containing a unique ID (`id`), title (`title`), link to target PRD section (`prd_link`), mapping to implemented User Stories (`user_stories: ["US-1", "US-2"]`), assignee (`assignee`), status (`todo`, `in_progress`, `done`), and effort estimate in story points (`estimate`).
 - **Description:** A clear explanation of what needs to be built and why.
 - **Acceptance Criteria Checklist:** A checklist detailing the specific checkboxes that must be ticked to consider the task complete.
 
-### 4. Create Bi-directional PRD Reference
+### 5. Create Bi-directional PRD Reference
 Once all tasks are written to `docs/tasks/`, the AI Agent must append or update a **Tasks & Checklist** table at the bottom of `docs/prd.md`, including user story tracing:
 
 ```markdown
@@ -47,7 +71,7 @@ Once all tasks are written to `docs/tasks/`, the AI Agent must append or update 
 | `TASK-0002` | Implement Login UI Page | `US-3` | [Section 4: Implementation Decisions](#implementation-decisions) | [0002-login-ui.md](tasks/0002-login-ui.md) | `todo` |
 ```
 
-### 5. Compile the Task Index Dashboard
+### 6. Compile the Task Index Dashboard
 
 Once all tasks are created or updated, the AI Agent must compile or update the central **Task Index** at `docs/tasks/README.md`.
 
