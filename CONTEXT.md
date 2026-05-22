@@ -12,6 +12,11 @@ _Avoid_: Extension, plugin, tool
 The process of linking a local skill directory to the target AI Agent's search path, allowing live updates to be instantly reflected.
 _Avoid_: Hard installation, copying, binary install
 
+**Remote Installation**:
+The process of transferring and installing a packaged skill to an isolated or remote AI Agent environment (e.g., containerized execution or cloud agents) using utility transfer commands like `curl`.
+_Avoid_: Direct symlinking, local mapping
+
+
 **Destination Path**:
 The target directory where a specific AI Agent searches for active skills.
 _Avoid_: Target folder, skills folder
@@ -27,4 +32,9 @@ _Avoid_: Issue, ticket, card
 **Task Index**:
 A markdown document (typically `docs/tasks/README.md`) that lists all generated Tasks, their current status, and basic project progress metrics.
 _Avoid_: Task list, backlog summary, issue summary
+
+**Devil's Advocate**:
+A specialized skill that critically challenges plans, code, or configuration by identifying hidden assumptions, edge cases, and proposing alternative designs.
+_Avoid_: Critic, red team, opposing agent
+
 
