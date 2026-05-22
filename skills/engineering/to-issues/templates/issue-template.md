@@ -4,6 +4,7 @@ title: "Brief Description of the Task"
 prd_link: "docs/prd.md#exact-section-anchor"
 assignee: "unassigned"
 status: "todo"
+estimate: 0
 ---
 
 # Issue: [Brief Description of the Task]
