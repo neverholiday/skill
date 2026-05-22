@@ -13,28 +13,35 @@ All custom skills are located within the `skills/` directory and grouped by cont
 ├── docs/
 │   └── adr/
 │       ├── 0001-universal-skills-installation.md
-│       └── 0002-local-markdown-issue-tracking.md
+│       ├── 0002-local-markdown-issue-tracking.md
+│       ├── 0003-unified-prd-structure-and-user-story-traceability.md
+│       └── 0004-devils-advocate-interactive-grilling-skill.md
 ├── scripts/
 │   └── install.sh                       ← Installation script to link skills locally
 └── skills/
-    └── engineering/
-        ├── grill-with-doc/              ← Socratic technical plan grilling skill
-        ├── to-tasks/                    ← Streamlined task breakdown plan generator
-        └── to-prd/                      ← Unified PRD generation skill based on Matt Pocock's skills
+    ├── engineering/
+    │   ├── devils-advocate/             ← Interactive sequential plan/code grilling skill
+    │   ├── grill-with-doc/              ← Socratic technical plan grilling skill
+    │   ├── to-prd/                      ← Unified PRD generation skill based on Matt Pocock's skills
+    │   └── to-tasks/                    ← Streamlined task breakdown plan generator
+    └── productivity/
+        ├── git-commit-push/             ← Automated, token-efficient git workflow skill
+        └── write-a-skill/               ← Assistant for writing standardized agent skills
 ```
 
 ## Available Skills
 
 ### 🛠️ Engineering
 
-*   **[grill-with-doc](file:///Users/nasrunhayeeyama/work/neverholiday/skill/skills/engineering/grill-with-doc/SKILL.md)**: A Socratic sparring partner designed to stress-test your implementation plans against existing code, establish a domain glossary (`CONTEXT.md`), and document critical trade-offs using Architectural Decision Records (ADRs).
-*   **[to-prd](file:///Users/nasrunhayeeyama/work/neverholiday/skill/skills/engineering/to-prd/SKILL.md)**: A unified Product Requirement Document (PRD) generator based on Matt Pocock's skills repository, synthesizing conversation and repository context into a robust PRD without interviews.
-*   **[to-tasks](file:///Users/nasrunhayeeyama/work/neverholiday/skill/skills/engineering/to-tasks/SKILL.md)**: A streamlined task breakdown skill that parses `docs/prd.md` to generate atomic local tasks under `docs/tasks/` with complete user story traceability.
+*   **[devils-advocate](skills/engineering/devils-advocate/SKILL.md)**: Critically challenge code, configuration, or plans by identifying edge cases, potential flaws, and alternative approaches in an interactive, sequential grilling format.
+*   **[grill-with-doc](skills/engineering/grill-with-doc/SKILL.md)**: A Socratic sparring partner designed to stress-test your implementation plans against existing code, establish a domain glossary (`CONTEXT.md`), and document critical trade-offs using Architectural Decision Records (ADRs).
+*   **[to-prd](skills/engineering/to-prd/SKILL.md)**: A unified Product Requirement Document (PRD) generator based on Matt Pocock's skills repository, synthesizing conversation and repository context into a robust PRD without interviews.
+*   **[to-tasks](skills/engineering/to-tasks/SKILL.md)**: A streamlined task breakdown skill that parses `docs/prd.md` to generate atomic local tasks under `docs/tasks/` with complete user story traceability.
 
 ### ⚡ Productivity
 
-*   **[git-commit-push](file:///Users/nasrunhayeeyama/work/neverholiday/skill/skills/productivity/git-commit-push/SKILL.md)**: An automated, token-efficient, and precise workflow to interactively stage changes, generate concise Conventional Commits, and push to remote repositories.
-*   **[write-a-skill](file:///Users/nasrunhayeeyama/work/neverholiday/skill/skills/productivity/write-a-skill/SKILL.md)**: A structured assistant designed to walk you through standardizing and writing new custom agent skills with proper layouts and progressive disclosure.
+*   **[git-commit-push](skills/productivity/git-commit-push/SKILL.md)**: An automated, token-efficient, and precise workflow to interactively stage changes, generate concise Conventional Commits, and push to remote repositories.
+*   **[write-a-skill](skills/productivity/write-a-skill/SKILL.md)**: A structured assistant designed to walk you through standardizing and writing new custom agent skills with proper layouts and progressive disclosure.
 
 ## Installation
 
