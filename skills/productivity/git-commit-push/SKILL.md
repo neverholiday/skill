@@ -74,15 +74,11 @@ Once the user approves the message (or provides edits):
 ### 5. Automated Upstream Push
 
 After committing:
-1. Attempt a standard push:
-   ```bash
-   git push
-   ```
-2. If the push fails because no remote upstream tracking branch is configured, automatically fetch the current branch name:
+1. Retrieve the current branch name:
    ```bash
    git branch --show-current
    ```
-   And execute the upstream configuration push directly:
+2. Push the branch to the remote repository and set the upstream tracking branch directly:
    ```bash
    git push -u origin <current-branch-name>
    ```
