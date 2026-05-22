@@ -17,22 +17,14 @@ The target directory where a specific AI Agent searches for active skills.
 _Avoid_: Target folder, skills folder
 
 **Product Requirement Document (PRD)**:
-A formal markdown document specifying product goals, user flows, and technical implementation details, supporting both a personal technical deep-dive and a traceable workplace format.
+A formal markdown document specifying problem statements, solutions, user stories, implementation decisions, and testing decisions for a feature, designed to align development before code is written.
 _Avoid_: Spec sheet, product brief
 
-**Traceability Mapping**:
-A tabular or structured system linking development tasks or issues directly to specific sections of a PRD, Product Owner (PO) specs, and Figma designs.
-_Avoid_: Ticket linking, reference table
+**Task**:
+A discrete engineering step represented as a markdown file in the `docs/tasks/` directory, tracing back directly to a specific section and User Story of a PRD.
+_Avoid_: Issue, ticket, card
 
-**Definition of Done (DoD)**:
-A set of quality and functional criteria (typically provided by the Product Owner in Workplace Mode) that a feature must meet before it is considered complete.
-_Avoid_: Completion checklist
-
-**Issue**:
-A discrete engineering task represented as a markdown file in a dedicated folder, tracing back directly to a specific section of a PRD.
-_Avoid_: Ticket, card
-
-**Issue Index**:
-A markdown document (typically `docs/issues/README.md`) that lists all generated Issues, their current status, and basic project progress metrics.
-_Avoid_: Issue summary, task list, backlog summary
+**Task Index**:
+A markdown document (typically `docs/tasks/README.md`) that lists all generated Tasks, their current status, and basic project progress metrics.
+_Avoid_: Task list, backlog summary, issue summary
 

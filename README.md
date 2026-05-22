@@ -19,8 +19,8 @@ All custom skills are located within the `skills/` directory and grouped by cont
 └── skills/
     └── engineering/
         ├── grill-with-doc/              ← Socratic technical plan grilling skill
-        ├── to-issues/                   ← Atomic markdown-first issue breakdown skill
-        └── to-prd/                      ← Professional PRD generation skill (personal & workplace)
+        ├── to-tasks/                    ← Streamlined task breakdown plan generator
+        └── to-prd/                      ← Unified PRD generation skill based on Matt Pocock's skills
 ```
 
 ## Available Skills
@@ -28,8 +28,8 @@ All custom skills are located within the `skills/` directory and grouped by cont
 ### 🛠️ Engineering
 
 *   **[grill-with-doc](file:///Users/nasrunhayeeyama/work/neverholiday/skill/skills/engineering/grill-with-doc/SKILL.md)**: A Socratic sparring partner designed to stress-test your implementation plans against existing code, establish a domain glossary (`CONTEXT.md`), and document critical trade-offs using Architectural Decision Records (ADRs).
-*   **[to-prd](file:///Users/nasrunhayeeyama/work/neverholiday/skill/skills/engineering/to-prd/SKILL.md)**: A unified Product Requirement Document (PRD) generator supporting both Personal Mode (deep technical specs) and Workplace Mode (traceable to Product Owner objectives, Figma designs, and Definition of Done specs).
-*   **[to-issues](file:///Users/nasrunhayeeyama/work/neverholiday/skill/skills/engineering/to-issues/SKILL.md)**: A modular issue breakdown skill that parses any `docs/prd.md` to generate highly detailed, atomic local markdown tasks in `docs/issues/` with complete traceability.
+*   **[to-prd](file:///Users/nasrunhayeeyama/work/neverholiday/skill/skills/engineering/to-prd/SKILL.md)**: A unified Product Requirement Document (PRD) generator based on Matt Pocock's skills repository, synthesizing conversation and repository context into a robust PRD without interviews.
+*   **[to-tasks](file:///Users/nasrunhayeeyama/work/neverholiday/skill/skills/engineering/to-tasks/SKILL.md)**: A streamlined task breakdown skill that parses `docs/prd.md` to generate atomic local tasks under `docs/tasks/` with complete user story traceability.
 
 ### ⚡ Productivity
 
