@@ -17,13 +17,17 @@ This skill takes the current conversation context and codebase understanding and
 
    Check with the user that these modules match their expectations. Check with the user which modules they want tests written for.
 
-3. Write the PRD using the template below to `docs/prd.md`.
-
-4. Map publishing: Since this project runs on a local-first workflow, **"publishing to the project task index"** means invoking the `/to-tasks` skill right after the PRD is generated to automatically break it down into local markdown tasks under `docs/tasks/` and compile the dashboard index in `docs/tasks/README.md`. Ensure each user story has a clear unique ID (e.g. `US-1`, `US-2`) to support full traceability.
+3. Write the PRD using the template below to `docs/prd.md`. Ensure each user story has a clear unique ID (e.g. `[US-1]`, `[US-2]`) to support full traceability.
 
 ---
 
 <prd-template>
+
+## Document History
+
+| Version | Date | Author | Description |
+| :--- | :--- | :--- | :--- |
+| `1.0` | YYYY-MM-DD | `@username` | Initial requirements and core user stories. |
 
 ## Problem Statement
 
