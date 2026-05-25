@@ -35,10 +35,12 @@ Sentinel dynamically adapts based on how it is invoked:
 Follow this step-by-step checklist exactly during execution:
 
 ### 1. Pre-flight Alignment Check 🛰️
-- `[ ]` Read `CONTEXT.md` in full.
-- `[ ]` Scan all decision documents under `docs/adr/` (and context-specific folders if they exist).
-- `[ ]` Review the active product spec at `docs/prd.md`.
-- `[ ]` **Concept & Glossary Check:** Evaluate if the planned work, files, or terms conflict with existing architectural patterns or terms definitions.
+- `[ ]` **Check for Documentation Availability:** Look for `CONTEXT.md`, `docs/adr/`, and `docs/prd.md` in the current repository.
+  - *If any of these files are missing:* Notify the developer that you are running in **Pure TDD & Live-Verification Mode** (e.g. *"No CONTEXT.md or docs/adr/ found. Proceeding with pure step-by-step TDD execution and live-verification"*). Gracefully skip the respective documentation checks.
+- `[ ]` Read `CONTEXT.md` in full (if present).
+- `[ ]` Scan all decision documents under `docs/adr/` (if present, including context-specific folders).
+- `[ ]` Review the active product spec at `docs/prd.md` (if present).
+- `[ ]` **Concept & Glossary Check (Only if docs are present):** Evaluate if the planned work, files, or terms conflict with existing architectural patterns or terms definitions.
   - *If a conflict is detected:* Stop immediately. Raise a clear warning to the developer (e.g. *"Your glossary defines X as Y, but this request assumes Z. How should we proceed?"*).
 
 ### 2. Initialize Execution State 📋 *(Task-Driven Mode Only)*
