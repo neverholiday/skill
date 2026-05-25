@@ -29,6 +29,14 @@ _Avoid_: Spec sheet, product brief
 A discrete engineering step represented as a markdown file in the `docs/tasks/` directory, tracing back directly to a specific section and User Story of a PRD.
 _Avoid_: Issue, ticket, card
 
+**Live-Environment Verification**:
+The phase of a Task execution where code is deployed to a developer environment (e.g. symlinked locally or installed remotely) to execute real-world scenarios, capture live logs/errors, and iteratively resolve them before marking the task as done.
+_Avoid_: Staging test, manual test, local run
+
+**Design-Aligned Execution**:
+The process of implementing code changes (with or without an explicit Task file) while strictly adhering to the architectural constraints in `docs/adr/`, domain glossary in `CONTEXT.md`, and requirements in `docs/prd.md`.
+_Avoid_: Free coding, blind coding, unaligned refactoring
+
 **Task Index**:
 A markdown document (typically `docs/tasks/README.md`) that lists all generated Tasks, their current status, and basic project progress metrics.
 _Avoid_: Task list, backlog summary, issue summary
@@ -36,5 +44,9 @@ _Avoid_: Task list, backlog summary, issue summary
 **Devil's Advocate**:
 A specialized skill that critically challenges plans, code, or configuration by identifying hidden assumptions, edge cases, and proposing alternative designs.
 _Avoid_: Critic, red team, opposing agent
+
+**Sentinel**:
+A custom skill designed for Design-Aligned Execution and Live-Environment Verification, ensuring code modifications (with or without explicit Task files) are strictly guardrailed by the glossary, ADRs, and PRD before and during live deployment testing.
+_Avoid_: Task runner, executor, direct coder
 
 
