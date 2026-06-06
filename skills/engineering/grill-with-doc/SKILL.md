@@ -85,4 +85,9 @@ Only offer to create an ADR when all three are true:
 
 If any of the three is missing, skip the ADR. Use the format in [ADR-FORMAT.md](./ADR-FORMAT.md).
 
+### Keep ADRs Immutable
+
+- **Always create a new ADR for a new decision:** Never modify or edit the historical context or core text of an existing, accepted ADR.
+- **Handle deprecation/supersedence via status update only:** If a new decision changes or overrides an existing decision, document it entirely in a new, sequentially numbered ADR. You may only edit the `status` frontmatter of the old ADR (e.g., updating it to `superseded by ADR-NNNN` or `deprecated`), leaving the rest of the file untouched to preserve history.
+
 </supporting-info>

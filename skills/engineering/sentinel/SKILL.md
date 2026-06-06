@@ -59,16 +59,21 @@ Follow this step-by-step checklist exactly during execution:
 - `[ ]` **Deploy/Install:** Execute the repository's installation script (typically `./scripts/install.sh`) to link, build, or deploy your changes to the target developer environment.
 - `[ ]` **Print Test Checklist:** Output a clear, step-by-step checklist under a prominent header: **`Live Verification Instructions`**. Detail exactly how the developer can manually run, trigger, or stress-test the changes.
 - `[ ]` **Verification Listening Mode:** Enter a listening state. Instruct the developer to run the tests and paste any errors, stack traces, logs, or behavioral quirks.
-- `[ ]` **Iterative Debugging:** If the developer pastes errors or stack traces:
-  - Deep-dive into the logs to diagnose root causes (e.g., file permissions, environment variables, interface mismatches).
-  - Apply targeted hot-fixes.
-  - Re-run `./scripts/install.sh` and ask the developer to test again.
-  - Loop until the developer explicitly confirms the implementation is fully working (e.g. *"It works!"*).
+- `[ ]` **Iterative Debugging (RCA & Proposal First):** If any errors, failures, or stack traces occur (either from compiler, test suites, or pasted by the developer):
+  - **Do NOT execute or apply any fixes immediately.**
+  - Perform a rigorous Root Cause Analysis (RCA) to diagnose exactly what happened and why.
+  - Present the RCA findings to the developer, along with a detailed proposal of the planned fix/edit/update (files to modify, code changes, or commands to run).
+  - **Wait for explicit developer review and approval** BEFORE executing or modifying any files.
+  - Once approved, apply the proposed changes, re-run `./scripts/install.sh`, and ask the developer to verify again.
+  - Loop this process, always presenting the RCA and proposal for approval before every attempt, until the developer confirms it works (e.g. *"It works!"*).
 
 ### 5. Finalize & Sync Backlog 🏁
-- `[ ]` **Complete Task:** *(Task-Driven Mode Only)*
+- `[ ]` **Developer Review & Task Completion:** *(Task-Driven Mode Only)*
   - Open the target task markdown file and check off the completed items in the **Acceptance Criteria** checklist.
-  - Transition `status` in the frontmatter to `done`.
+  - **Do NOT transition the task status to done immediately.** Keep `status` in the frontmatter as `in_progress`.
+  - Prompt the developer for a final review and explicitly ask for permission/confirmation to proceed to mark the task completed.
+  - **Wait for developer confirmation to proceed.**
+  - Once confirmed, transition the task `status` in the frontmatter to `done`.
   - Rebuild the `docs/tasks/README.md` task index dashboard.
   - Update the PRD's bottom checklist table.
 - `[ ]` **Summarize & Suggest Commit:**
