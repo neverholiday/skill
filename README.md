@@ -24,6 +24,7 @@ All custom skills are located within the `skills/` directory and grouped by cont
     ├── engineering/
     │   ├── devils-advocate/             ← Interactive sequential plan/code grilling skill
     │   ├── grill-with-doc/              ← Socratic technical plan grilling skill
+    │   ├── robin/                       ← Domain discovery & documentation bootstrap skill
     │   ├── sentinel/                    ← Design-aligned execution & live verification skill
     │   ├── to-prd/                      ← Unified PRD generation skill based on Matt Pocock's skills
     │   └── to-tasks/                    ← Streamlined task breakdown plan generator
@@ -38,6 +39,7 @@ All custom skills are located within the `skills/` directory and grouped by cont
 
 *   **[devils-advocate](skills/engineering/devils-advocate/SKILL.md)**: Critically challenge code, configuration, or plans by identifying edge cases, potential flaws, and alternative approaches in an interactive, sequential grilling format.
 *   **[grill-with-doc](skills/engineering/grill-with-doc/SKILL.md)**: A Socratic sparring partner designed to stress-test your implementation plans against existing code, establish a domain glossary (`CONTEXT.md`), and document critical trade-offs using Architectural Decision Records (ADRs).
+*   **[robin](skills/engineering/robin/SKILL.md)**: A domain discovery and documentation bootstrapper that scans undocumented codebases, generates clean `CONTEXT.md` glossaries and initial ADRs, facilitates interactive decision reviews via premium HTML reports, and aligns code implementation.
 *   **[sentinel](skills/engineering/sentinel/SKILL.md)**: Enforces Design-Aligned Execution and coordinates Live-Environment Verification feedback loops with or without explicit developer task files.
 *   **[to-prd](skills/engineering/to-prd/SKILL.md)**: A unified Product Requirement Document (PRD) generator based on Matt Pocock's skills repository, synthesizing conversation and repository context into a robust PRD without interviews.
 *   **[to-tasks](skills/engineering/to-tasks/SKILL.md)**: A streamlined task breakdown skill that parses `docs/prd.md` to generate atomic local tasks under `docs/tasks/` with complete user story traceability.
