@@ -1,6 +1,6 @@
 ---
 name: grill-with-doc
-description: Grilling session that challenges your plan against the existing domain model, sharpens terminology, and updates documentation (CONTEXT.md, ADRs) inline as decisions crystallise. Use when user wants to stress-test a plan against their project's language and documented decisions.
+description: Grilling session that challenges your plan against the existing domain model, sharpens terminology, and updates documentation (CONTEXT.md, ADRs) inline as decisions crystallise. This skill does not make code changes; it only updates Context and ADRs. Use when user wants to stress-test a plan against their project's language and documented decisions.
 ---
 
 <what-to-do>
@@ -10,6 +10,8 @@ Interview me relentlessly about every aspect of this plan until we reach a share
 Ask the questions one at a time, waiting for feedback on each question before continuing.
 
 If a question can be answered by exploring the codebase, explore the codebase instead.
+
+Do NOT modify, write, or delete any code files (such as source code, tests, build configurations, or scripts). Your write operations must be strictly limited to updating or creating documentation (specifically `CONTEXT.md`, `CONTEXT-MAP.md`, and ADR markdown files).
 
 </what-to-do>
 
@@ -49,7 +51,7 @@ If a `CONTEXT-MAP.md` exists at the root, the repo has multiple contexts. The ma
 │       └── docs/adr/
 ```
 
-Create files lazily — only when you have something to write. If no `CONTEXT.md` exists, create one when the first term is resolved. If no `docs/adr/` exists, create it when the first ADR is needed.
+Create documentation files lazily — only when you have something to write. If no `CONTEXT.md` exists, create one when the first term is resolved. If no `docs/adr/` exists, create it when the first ADR is needed. Do not create any source files or other code-related files.
 
 ## During the session
 
@@ -68,6 +70,8 @@ When domain relationships are being discussed, stress-test them with specific sc
 ### Cross-reference with code
 
 When the user states how something works, check whether the code agrees. If you find a contradiction, surface it: "Your code cancels entire Orders, but you just said partial cancellation is possible — which is right?"
+
+Remember: do NOT modify the codebase to fix any inconsistencies or implement decisions. Code changes are completely out of scope for this skill. Resolve all decisions strictly by updating `CONTEXT.md` and ADRs.
 
 ### Update CONTEXT.md inline
 
