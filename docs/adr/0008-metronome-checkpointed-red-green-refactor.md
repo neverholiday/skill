@@ -1,6 +1,6 @@
 # 0008. Metronome Checkpointed Red-Green-Refactor Execution
 
-**Status:** accepted
+**Status:** accepted; how often high-risk work stops is superseded by ADR-0009
 
 We decided to add a skill named **Metronome** that implements code through a Red-Green-Refactor Cycle with fixed developer checkpoints, starting from an agreed Kickoff.
 

@@ -10,7 +10,7 @@ Code is written in a steady beat the developer can follow: one test, red, green,
 ## Principles
 
 - **Tests are the contract.** No production code is written before a failing test asks for it.
-- **Attention where it pays.** The Kickoff is the one mandatory stop. Mid-cycle stops happen only on the triggers below, or on every Red when the risk is high.
+- **Attention where it pays.** The Kickoff is the one mandatory stop. Mid-cycle stops happen only on the triggers below, or once per PR, after its Red Set, when the risk is high.
 - **Small PRs.** One concern per PR, and at most about 200 lines of non-test code. If the Kickoff estimate is bigger, propose a stack of PRs that each merge on their own.
 - **Cheap checkpoints.** Every stop is at most 5 lines and ends with one question, so "ok" is a full answer.
 - **One decision at a time.** Never ask a batch of questions.
@@ -31,7 +31,7 @@ Read the task, its DoD and the design references (glossary, ADRs, decisions) and
 1. <TestName>: given ..., when ..., then ...
 2. ...
 **PR shape:** <files>, ~<n> lines of non-test code, 1 PR | split into <list>
-**Risk:** low (stop at Kickoff only) | high (also stop after every Red), because <reason>
+**Risk:** low (stop at Kickoff only) | high (also stop once per PR, after its Red Set), because <reason>
 **Question:** <one question, or "OK to start?">
 ```
 
@@ -39,17 +39,26 @@ Read the task, its DoD and the design references (glossary, ADRs, decisions) and
 - Add, drop or reorder tests only here. A test list change after the Kickoff is a stop trigger.
 - Do not touch any file until the developer says OK.
 
-### 2. Cycle, once per test
+### 2. Red Set, once per PR (high risk only)
 
-1. **Red.** Write the one test. Run it and confirm it fails for the expected reason: the missing behaviour, not a compile error elsewhere or a broken fixture.
-   - Low risk: continue.
-   - High risk: stop and send `Red <n>/<total> <TestName>: <one failure line> (expected because <reason>). Continue?`
+Before the first cycle of each PR in the stack:
+
+1. Write every test of that PR. Add only the stubs they need to compile: types, signatures, a sentinel error, a method that returns "not implemented".
+2. Run them. Each must fail for its expected reason, the missing behaviour; a compile error is not a Red. Every existing test must still pass.
+3. Stop once and send one table, `# | Test | fails with | expected because`, then the Green plan in a few bullets. Wait for OK.
+4. Run the cycles below for that PR's tests without further stops, unless a stop trigger fires.
+
+Never write the Reds of a later PR ahead of time: its tests depend on what the earlier PRs settle.
+
+### 3. Cycle, once per test
+
+1. **Red.** Write the one test (high risk: it is already written in the Red Set). Run it and confirm it fails for the expected reason: the missing behaviour, not a compile error elsewhere or a broken fixture.
 2. **Green.** Write the least code that makes this test pass. Run the test, then the package's tests.
 3. **Commit** the test and the code together: `<type>(<scope>): <behaviour the test pins>`.
 4. **Refactor.** Clean up only what this cycle touched. Tests must stay green. Commit separately as `refactor(<scope>): ...`, or skip and say so.
 5. Report one line, `Green <n>/<total> <TestName>: +<a>/-<b> in <files>, <sha>`, and go to the next test.
 
-### 3. Stop triggers (any risk level)
+### 4. Stop triggers (any risk level)
 
 Stop, explain the root cause, propose one way forward, and wait when:
 
@@ -61,7 +70,7 @@ Stop, explain the root cause, propose one way forward, and wait when:
 
 Do not work around a trigger silently. A fix applied without the developer's approval is the "giant leap" this skill exists to prevent.
 
-### 4. Close
+### 5. Close
 
 - [ ] Run the formatters, linters and the full relevant test suite. Report failures that already exist on the base branch separately, with proof.
 - [ ] Do the end-to-end verification the project requires. If **sentinel** applies, follow its live-verification loop.

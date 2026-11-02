@@ -19,7 +19,8 @@ All custom skills are located within the `skills/` directory and grouped by cont
 │       ├── 0005-decoupled-requirement-to-task-workflow.md
 │       ├── 0006-sentinel-design-aligned-execution-workflow.md
 │       ├── 0007-immutable-adrs-and-sentinel-review-safety.md
-│       └── 0008-metronome-checkpointed-red-green-refactor.md
+│       ├── 0008-metronome-checkpointed-red-green-refactor.md
+│       └── 0009-metronome-red-set-per-pr.md
 ├── scripts/
 │   └── install.sh                       ← Installation script to link skills locally
 └── skills/

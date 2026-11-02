@@ -61,4 +61,8 @@ _Avoid_: Plan, proposal, design review
 One pass for one test: write the failing test (red), write the least code that passes it (green), commit, then clean up with the tests still passing (refactor).
 _Avoid_: Iteration, slice, step
 
+**Red Set**:
+All the failing tests of one PR in a high-risk Metronome stack, written together with only the stubs they need to compile, run to confirm each fails for its expected reason, and shown to the developer at one stop before the PR's first Green.
+_Avoid_: All red, test batch, red phase
+
 
