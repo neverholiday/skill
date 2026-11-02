@@ -1,0 +1,92 @@
+---
+name: metronome
+description: Checkpointed red-green-refactor execution that keeps the developer able to follow every change. Agree a Kickoff first (scope, design drift, models, ordered test list, PR shape, risk), then run one test at a time through red, green and refactor with one commit per cycle, stopping only at agreed checkpoints. Use when the user wants to implement a task, feature or bug fix with TDD, wants small reviewable PRs with tests, or says they cannot keep up with the code being written.
+---
+
+# Metronome
+
+Code is written in a steady beat the developer can follow: one test, red, green, refactor, commit, next. The developer's attention goes to the **Kickoff**, where the tests are agreed. After that, the tests are the contract, and the developer reads the commit history at their own pace instead of watching every line.
+
+## Principles
+
+- **Tests are the contract.** No production code is written before a failing test asks for it.
+- **Attention where it pays.** The Kickoff is the one mandatory stop. Mid-cycle stops happen only on the triggers below, or on every Red when the risk is high.
+- **Small PRs.** One concern per PR, and at most about 200 lines of non-test code. If the Kickoff estimate is bigger, propose a stack of PRs that each merge on their own.
+- **Cheap checkpoints.** Every stop is at most 5 lines and ends with one question, so "ok" is a full answer.
+- **One decision at a time.** Never ask a batch of questions.
+- **Stay in the beat.** Never jump ahead to code that no current test needs.
+
+## Workflow
+
+### 1. Kickoff (stop and wait for OK)
+
+Read the task, its DoD and the design references (glossary, ADRs, decisions) and the code the change touches. Then send:
+
+```
+## Kickoff: <task id and title>
+**Scope:** in: ... | out: ... (refs: DoD items, decisions, ADRs)
+**Design drift:** none | <what the code cannot do as designed, and a proposal>
+**Models and signatures:** <types, structs, interfaces, function signatures; shapes only, no logic>
+**Tests, in order:**
+1. <TestName>: given ..., when ..., then ...
+2. ...
+**PR shape:** <files>, ~<n> lines of non-test code, 1 PR | split into <list>
+**Risk:** low (stop at Kickoff only) | high (also stop after every Red), because <reason>
+**Question:** <one question, or "OK to start?">
+```
+
+- Mark the risk **high** for auth and permissions, deleting or migrating data, money, concurrency, or anything hard to reverse. Everything else is **low**. The developer can override it.
+- Add, drop or reorder tests only here. A test list change after the Kickoff is a stop trigger.
+- Do not touch any file until the developer says OK.
+
+### 2. Cycle, once per test
+
+1. **Red.** Write the one test. Run it and confirm it fails for the expected reason: the missing behaviour, not a compile error elsewhere or a broken fixture.
+   - Low risk: continue.
+   - High risk: stop and send `Red <n>/<total> <TestName>: <one failure line> (expected because <reason>). Continue?`
+2. **Green.** Write the least code that makes this test pass. Run the test, then the package's tests.
+3. **Commit** the test and the code together: `<type>(<scope>): <behaviour the test pins>`.
+4. **Refactor.** Clean up only what this cycle touched. Tests must stay green. Commit separately as `refactor(<scope>): ...`, or skip and say so.
+5. Report one line, `Green <n>/<total> <TestName>: +<a>/-<b> in <files>, <sha>`, and go to the next test.
+
+### 3. Stop triggers (any risk level)
+
+Stop, explain the root cause, propose one way forward, and wait when:
+
+- A Red fails for an unexpected reason, or the test passes before any code is written.
+- The code cannot follow the design, or the change would contradict a decision or ADR.
+- An agreed test needs to change, or a new test is needed.
+- The PR is heading past the agreed shape or the line budget.
+- The next step is destructive, outward-facing or hard to reverse.
+
+Do not work around a trigger silently. A fix applied without the developer's approval is the "giant leap" this skill exists to prevent.
+
+### 4. Close
+
+- [ ] Run the formatters, linters and the full relevant test suite. Report failures that already exist on the base branch separately, with proof.
+- [ ] Do the end-to-end verification the project requires. If **sentinel** applies, follow its live-verification loop.
+- [ ] Send the commit list (one line per cycle) so the developer can review it commit by commit.
+- [ ] Draft the PR description:
+
+```
+## Summary
+<what changed and why, one bullet per concern>
+
+## Verification
+<tests added; E2E steps and results; pre-existing failures>
+
+## Release notes / runbook
+<only if deploy steps or user-visible changes exist>
+
+## Follow-up
+<work deliberately left out of this PR, and where it goes>
+```
+
+## Working with other skills
+
+- **sentinel** checks the change against the design and runs live verification. **metronome** sets the order in which code is written and when to stop. When both apply, run sentinel's pre-flight check before the Kickoff, use metronome's cycles to implement, and use sentinel's live-verification loop in Close.
+- **grill-with-doc** or **devils-advocate** fit before the Kickoff, when the design itself is still open.
+
+## Limits
+
+- Code that only runs against real infrastructure (a seeder against a database, a migration, a deploy script) can't be red-green-refactored on its own. Pull its pure logic out and test that, for example catalog invariants, and cover the rest in Close with end-to-end verification.
