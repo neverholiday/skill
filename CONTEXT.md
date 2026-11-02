@@ -49,4 +49,16 @@ _Avoid_: Critic, red team, opposing agent
 A custom skill designed for Design-Aligned Execution and Live-Environment Verification, ensuring code modifications (with or without explicit Task files) are strictly guardrailed by the glossary, ADRs, and PRD before and during live deployment testing.
 _Avoid_: Task runner, executor, direct coder
 
+**Metronome**:
+A custom skill that implements code through Red-Green-Refactor Cycles after an agreed Kickoff, with one commit per cycle and stops only at agreed checkpoints, so the developer can follow every change.
+_Avoid_: TDD runner, auto-coder
+
+**Kickoff**:
+The checkpoint before any file changes where the agent presents scope, design drift, models and signatures, the ordered test list, the PR shape and the risk level, and waits for the developer's approval.
+_Avoid_: Plan, proposal, design review
+
+**Red-Green-Refactor Cycle**:
+One pass for one test: write the failing test (red), write the least code that passes it (green), commit, then clean up with the tests still passing (refactor).
+_Avoid_: Iteration, slice, step
+
 
