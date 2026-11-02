@@ -1,6 +1,6 @@
 ---
 name: metronome
-description: Checkpointed red-green-refactor execution that keeps the developer able to follow every change. Agree a Kickoff first (scope, design drift, models, ordered test list, PR shape, risk), then run one test at a time through red, green and refactor with one commit per cycle, stopping only at agreed checkpoints. Use when the user wants to implement a task, feature or bug fix with TDD, wants small reviewable PRs with tests, or says they cannot keep up with the code being written.
+description: Checkpointed red-green-refactor execution that keeps the developer able to follow every change. Agree a Kickoff first (scope, design drift, models, ordered test list, PR shape, risk), then run one test at a time through red, green and refactor with one commit per cycle, stopping only at agreed checkpoints, and close with a triaged code review before the PR. Use when the user wants to implement a task, feature or bug fix with TDD, wants small reviewable PRs with tests, or says they cannot keep up with the code being written.
 ---
 
 # Metronome
@@ -65,6 +65,11 @@ Do not work around a trigger silently. A fix applied without the developer's app
 
 - [ ] Run the formatters, linters and the full relevant test suite. Report failures that already exist on the base branch separately, with proof.
 - [ ] Do the end-to-end verification the project requires. If **sentinel** applies, follow its live-verification loop.
+- [ ] **Code review.** Review the full diff against the base branch before any PR exists. Use the platform's code-review skill when there is one (in Claude Code, `code-review` on the branch diff). Otherwise, have a reviewer that hasn't seen your reasoning read the diff, such as a fresh subagent given only the diff and the task.
+  1. Check every finding against the code, the design and the agreed scope. Mark each one **real**, **intended** (cite the decision, ADR or DoD), **out of scope** (name the follow-up task) or **pre-existing** (show that it also happens on the base branch).
+  2. Send one short table with one row per finding and that verdict, then ask one question: which real findings to fix in this PR.
+  3. Fix each agreed real defect as a new Red-Green-Refactor Cycle: first a test that reproduces it, then the fix. Cleanups that change no behaviour go in a `refactor` commit.
+  4. Put the intended and out-of-scope findings into the PR description's Follow-up section, so the human reviewer sees they were weighed.
 - [ ] Send the commit list (one line per cycle) so the developer can review it commit by commit.
 - [ ] Draft the PR description:
 
